@@ -12,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Init {
     public void main() throws InterruptedException{
-        System.setProperty("webdriver.chrome.driver","/Users/angelovenegasvilche/.cache/selenium/chromedriver/mac64/106.0.5249.61/chromedriver");
+        System.setProperty("webdriver.chrome.driver","/Users/chris/.cache/selenium/chromedriver/win32/106.0.5249.61/chromedriver");
 
         //testWhatsapp();
     }

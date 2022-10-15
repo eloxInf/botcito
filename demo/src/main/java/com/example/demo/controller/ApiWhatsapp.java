@@ -23,7 +23,7 @@ public class ApiWhatsapp {
 	ChromeDriver driver = null;
 	
 	private void ApiWhatsapp() {
-        System.setProperty("webdriver.chrome.driver","/Users/angelovenegasvilche/.cache/selenium/chromedriver/mac64/106.0.5249.61/chromedriver");
+        System.setProperty("webdriver.chrome.driver","/Users/chris/.cache/selenium/chromedriver/win32/106.0.5249.61/chromedriver");
 
         driver = new ChromeDriver();
 	}
@@ -34,7 +34,7 @@ public class ApiWhatsapp {
 
 		
 		if (driver == null) {
-        System.setProperty("webdriver.chrome.driver","/Users/angelovenegasvilche/.cache/selenium/chromedriver/mac64/106.0.5249.61/chromedriver");
+        System.setProperty("webdriver.chrome.driver","/Users/chris/.cache/selenium/chromedriver/win32/106.0.5249.61/chromedriver");
         driver = new ChromeDriver();
 		}
 		
