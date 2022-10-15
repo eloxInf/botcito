@@ -1,32 +1,62 @@
 package com.example.demo;
 
-import java.io.File;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class Init {
     public void main() throws InterruptedException{
-        System.setProperty("webdriver.chrome.driver","/Users/chris/.cache/selenium/chromedriver/win32/106.0.5249.61/chromedriver");
+        System.setProperty("webdriver.chrome.driver","C://chromedriver_win32//chromedriver.exe");
 
-        //testWhatsapp();
+        searchBuddy();
+    }
+
+    public void searchBuddy() {
+      String url1 = "http://www.falabella.com/falabella-cl/category/cat1012/TV-y-Video";
+      String product = "LED 32\" A4H HD Smart";
+      String price = "149.990";
+      Boolean foundIt = false;
+
+      ChromeDriver driver = new ChromeDriver();
+
+      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+
+      JavascriptExecutor js = (JavascriptExecutor) driver;
+      driver.get(url1);
+      driver.manage().window().maximize();
+      
+      do {
+        //Espera a que encuentre el elemento
+        WebElement findNextPage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id( "testId-pagination-bottom-arrow-right")));
+        WebElement findProduct = driver.findElement(By.xpath("//*[starts-with(@id, 'testId-pod-displaySubTitle')]"));
+        System.out.println("XDDDDDDDDDDDDDDDDD" + findProduct);
+        //WebElement findPrice = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/section[2]/div[1]/div[2]/div[1]/div/a/div[2]/div[2]/ol/li[1]/div/span"));
+        if ( findProduct != null) {
+          foundIt = true;
+        }
+        //El sitio caraga mientras scrolleas, con esta funcion scroleamos hasta encontrar el elemento
+        js.executeScript("arguments[0].scrollIntoView();", findNextPage);
+        findNextPage.click();
+      } while (foundIt);
+      System.out.println("Encontramos su producto!");
     }
     
-    private void testWhatsapp() {
+    public void testWhatsapp() {
         String url1 = "https://web.whatsapp.com/";
         ChromeDriver driver = new ChromeDriver();
         driver.get(url1);
         WebElement findSearch = driver.findElement(By.xpath("//*[@id=\"side\"]/div[1]/div/div/div[2]/div/div[2]"));
         findSearch.click();
-        findSearch.sendKeys("vane");
-        
-        
-        
+        findSearch.sendKeys("Rorro");   
     }
     
     private void test2() {
