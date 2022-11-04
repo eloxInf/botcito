@@ -1,0 +1,59 @@
+db.user_comunication.insertOne({
+    "idMessage": "00111",
+    "soruceMessage": "User",
+    "identificationUser": "56978526198",
+    "message": "Hola",
+    "dateTransaction": "2022-10-10",
+    "platform": "Telegram",
+    "answereProperty": {
+        "idParentMje": "0004",
+        "is_valid_answer": false
+    }
+})
+
+
+db.question_and_answers.insertOne({
+
+"internalCode" : "0001",
+"userMessage": "hola",
+"botMessage": "hola, bien y tu en que te puedo ayudar?",
+"actionCode": "00000"
+})
+
+db.question_and_answers.insertOne({
+
+"internalCode" : "0002",
+"userMessage": "chao",
+"botMessage": "que tengas un buen dia",
+"actionCode": "00000"
+})
+
+db.question_and_answers.insertOne({
+
+"internalCode" : "0002",
+"userMessage": "tula",
+"botMessage": "mmm si, cometela doblada",
+"actionCode": "00000"
+})
+
+db.question_and_answers.insertOne({
+
+"internalCode" : "0002",
+"userMessage": "que dia es hoy",
+"botMessage": "el dia de la corneta",
+"actionCode": "00000"
+})
+
+db.question_and_answers.insertOne({
+"internalCode" : "0002",
+"userMessage": "matias",
+"botMessage": "anda con mentiras",
+"actionCode": "00000"
+})
+
+db.question_and_answers.insertOne({
+"internalCode" : "0002",
+"userMessage": "xxx",
+"botMessage": "Buena pelicula",
+"actionCode": "00000"
+})

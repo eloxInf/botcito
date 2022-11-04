@@ -1,0 +1,10 @@
+info:
+  component: core-questions-and-answers
+  version: 1.0.0
+  
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/BotcitoBd
+server:
+  port: 8080
