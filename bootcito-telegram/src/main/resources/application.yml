@@ -1,0 +1,5 @@
+telegram-bot:
+    user-name: ${USER_TELEGRAM}
+    token: ${TOKEN_TELEGRAM}
+server:
+    port: 8080

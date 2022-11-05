@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-BootcitoApplication<bootcito>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.solution.bootcito.BootcitoApplication",
+            "projectName": "bootcito",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

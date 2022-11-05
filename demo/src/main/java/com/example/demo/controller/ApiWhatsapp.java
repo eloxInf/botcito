@@ -17,7 +17,7 @@ import com.example.demo.dto.ResponseSendMessage;
 
 @RestController
 public class ApiWhatsapp {
-	
+	/*
 	String urlWhatsapp = "https://web.whatsapp.com/";
 	final Logger logger = LoggerFactory.getLogger(cronController.class);
 	ChromeDriver driver = null;
@@ -144,5 +144,5 @@ public class ApiWhatsapp {
 		return findSearchNumber(driver) !=null;
 		
 	}
-
+ */
 }

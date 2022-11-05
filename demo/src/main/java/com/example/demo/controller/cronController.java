@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class cronController {
+	/*
 	ChromeDriver driver;
 	String urlWhatsapp = "https://web.whatsapp.com/";
 	
@@ -29,6 +30,6 @@ public class cronController {
 	}
 	
 	
-	
+	 */
 	
 }

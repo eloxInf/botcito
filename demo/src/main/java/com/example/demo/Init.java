@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
@@ -15,39 +16,59 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Init {
     public void main() throws InterruptedException{
-        System.setProperty("webdriver.chrome.driver","C://chromedriver_win32//chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","C:\\WebDriver\\bin\\chromedriver.exe");
 
         searchBuddy();
     }
 
     public void searchBuddy() {
       String url1 = "http://www.falabella.com/falabella-cl/category/cat1012/TV-y-Video";
-      String product = "LED 32\" A4H HD Smart";
-      String price = "149.990";
+      String product = "Smart TV Caixun 43 UHD 4K Android";
+      String price = "184.990";
       Boolean foundIt = false;
 
-      ChromeDriver driver = new ChromeDriver();
-
-      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
-
-      JavascriptExecutor js = (JavascriptExecutor) driver;
-      driver.get(url1);
-      driver.manage().window().maximize();
+     
       
       do {
+
+        ChromeDriver driver = new ChromeDriver();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+  
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        driver.get(url1);
+        driver.manage().window().maximize();
+
+
         //Espera a que encuentre el elemento
         WebElement findNextPage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id( "testId-pagination-bottom-arrow-right")));
-        WebElement findProduct = driver.findElement(By.xpath("//*[starts-with(@id, 'testId-pod-displaySubTitle')]"));
-        System.out.println("XDDDDDDDDDDDDDDDDD" + findProduct);
+       // WebElement findProduct = driver.findElement(By.xpath("//*[starts-with(@id, 'testId-pod-displaySubTitle')]"));
+      //  System.out.println("XDDDDDDDDDDDDDDDDD" + findProduct);
         //WebElement findPrice = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/div[2]/section[2]/div[1]/div[2]/div[1]/div/a/div[2]/div[2]/ol/li[1]/div/span"));
-        if ( findProduct != null) {
-          foundIt = true;
+      
+      
+        List<WebElement> findProduct = driver.findElements(By.xpath("//*[starts-with(@id, 'testId-pod-displaySubTitle')]"));
+
+        for (WebElement product_find : findProduct){
+            String nameProduct =  product_find.getText().toString();
+            if ( nameProduct.equals(product) ) {
+                foundIt = true;
+                System.out.println("Encontramos su producto!");
+               // driver.quit();
+            }
         }
+
+      /* 
         //El sitio caraga mientras scrolleas, con esta funcion scroleamos hasta encontrar el elemento
         js.executeScript("arguments[0].scrollIntoView();", findNextPage);
         findNextPage.click();
-      } while (foundIt);
-      System.out.println("Encontramos su producto!");
+          */
+      } while (!foundIt);{
+        //driver.quit();
+        System.out.println("Encontramos su producto!");
+
+      }
+
     }
     
     public void testWhatsapp() {
