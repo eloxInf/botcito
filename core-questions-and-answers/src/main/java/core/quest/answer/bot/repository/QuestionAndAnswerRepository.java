@@ -12,7 +12,9 @@ import org.springframework.data.mongodb.repository.Query;
 @Repository
 public interface QuestionAndAnswerRepository extends MongoRepository<QuestionAndAnswer, String> {
 
-	@Query(" { userMessage: { $regex : ?0, $options:'i' } }")
+	
 	List<QuestionAndAnswer> findByUserMessage(String userMessage);
+	
+	List<QuestionAndAnswer> findByInternalCode(String internalCode);
 	
 }

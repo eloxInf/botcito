@@ -7,4 +7,6 @@ public interface QuestionsAndAnswersService {
 
 	ResponseInputMessage getQuestionAndAnswers(String userMessage);
 
+	ResponseInputMessage getInternalAnswer(String codInternal);
+
 }

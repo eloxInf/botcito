@@ -57,6 +57,7 @@ public class TelegramServiceImpl extends TelegramLongPollingBot implements  Tele
     @Override
     public ResponseBaseStatus sendMessage(long chatId, String message){
          SendMessage sendMessage = new SendMessage();
+                  
          sendMessage.setChatId(chatId);
          sendMessage.setText(message);
  

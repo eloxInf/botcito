@@ -31,7 +31,43 @@ public class QuestionAndAnswerMgrImp implements QuestionAndAnswerMgr {
 		try {
 			
 			ResponseInputMessage reponse = questionsAndAnswersService
-					.getQuestionAndAnswers(requestInputMessage.getMessage());
+					.getQuestionAndAnswers(requestInputMessage.getMessage().trim().toLowerCase());
+			
+			// Flujo para URL
+			if(containUrl(requestInputMessage.getMessage())) {
+				
+				ResponseInputMessage internalMessage = questionsAndAnswersService
+						.getInternalAnswer("5");
+				
+				reponse.setMessage(internalMessage.getMessage());
+			}
+						
+			if(reponse.getMessage() == null) {
+				reponse.setMessage("Aun no se responder esa pregunta :/");
+			}
+			
+			if(requestInputMessage.getMessage().trim().toLowerCase().equals("/salud")) {
+				
+				TelegramRequestSendMessage telegramRequestSendMessage = new TelegramRequestSendMessage();
+				
+				telegramRequestSendMessage.setChatId(requestInputMessage.getIdentificationUser());
+				telegramRequestSendMessage.setMessage("Servicio Telegram -> ok");
+				
+				telegramService.sendMessage(telegramRequestSendMessage);
+				telegramRequestSendMessage.setMessage("bot de respuestas -> ok");
+				
+				telegramService.sendMessage(telegramRequestSendMessage);
+				telegramRequestSendMessage.setMessage("bot de busqueda -> ok");
+				
+				
+				telegramService.sendMessage(telegramRequestSendMessage);
+				telegramRequestSendMessage.setMessage("Botcito esta vivo y coleando.. Adios!");
+				
+				telegramService.sendMessage(telegramRequestSendMessage);
+				
+				reponse.setMessage("");
+				return reponse;
+			}
 			
 			TelegramRequestSendMessage telegramRequestSendMessage = new TelegramRequestSendMessage();
 			
@@ -58,4 +94,15 @@ public class QuestionAndAnswerMgrImp implements QuestionAndAnswerMgr {
 
 		}
 	}
+	
+	private Boolean containUrl(String message) {
+		
+		return (message.contains("https"));
+
+		
+	}
+	
+	
+	
+	
 }
