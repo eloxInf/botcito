@@ -1,16 +1,13 @@
-package com.example.demo;
+package com.bootcito.telegram;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-
 @SpringBootTest
-class DemoApplicationTests {
+class BootcitoTelegramApplicationTests {
 
 	@Test
 	void contextLoads() {
-		WebDriverManager.chromedriver().setup();
 	}
 
 }
