@@ -3,7 +3,7 @@ package com.bootcito.telegram.dto.response;
 import lombok.Data;
 
 @Data
-public class Status {
+public class ResponseBaseStatus {
     
     private String code;
 
