@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import core.quest.answer.bot.dto.RequestInputMessage;
+import core.quest.answer.bot.dto.ResponseBase;
+import core.quest.answer.bot.dto.ResponseInputMessage;
 import core.quest.answer.bot.mgr.QuestionAndAnswerMgr;
 import core.quest.answer.bot.model.QuestionAndAnswer;
 import core.quest.answer.bot.service.QuestionsAndAnswersService;
@@ -19,16 +21,25 @@ public class QuestionAndAnswerMgrImp implements QuestionAndAnswerMgr {
 	final Logger log = LoggerFactory.getLogger(QuestionAndAnswerMgrImp.class);
 
 	@Override
-	public String getAnswer(RequestInputMessage requestInputMessage) {
+	public ResponseInputMessage getAnswer(RequestInputMessage requestInputMessage) {
 
 		try {
 			
-			QuestionAndAnswer answer = questionsAndAnswersService
+			ResponseInputMessage reponse = questionsAndAnswersService
 					.getQuestionAndAnswers(requestInputMessage.getMessage());
 			
-			return answer.getBotMessage();
+			return reponse;
+			
+			
 		} catch (Exception e) {
-			return "";
+			ResponseInputMessage reponse = new ResponseInputMessage();
+			ResponseBase status =  new ResponseBase();
+			
+			status.setCode("418");
+			status.setDesciption(e.getMessage());
+			
+			reponse.setStatus(status);	
+			return reponse;
 
 		}
 	}

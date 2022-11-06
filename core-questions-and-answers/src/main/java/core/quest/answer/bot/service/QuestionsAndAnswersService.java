@@ -1,10 +1,10 @@
 package core.quest.answer.bot.service;
 
 
-import core.quest.answer.bot.model.QuestionAndAnswer;
+import core.quest.answer.bot.dto.ResponseInputMessage;
 
 public interface QuestionsAndAnswersService {
 
-	QuestionAndAnswer getQuestionAndAnswers(String userMessage);
+	ResponseInputMessage getQuestionAndAnswers(String userMessage);
 
 }

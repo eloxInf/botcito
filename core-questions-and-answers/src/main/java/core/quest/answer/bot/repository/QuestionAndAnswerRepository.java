@@ -1,14 +1,18 @@
 package core.quest.answer.bot.repository;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import core.quest.answer.bot.model.QuestionAndAnswer;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import java.util.List;
 
-@Service
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+
+@Repository
 public interface QuestionAndAnswerRepository extends MongoRepository<QuestionAndAnswer, String> {
 
-	QuestionAndAnswer findByUserMessage(String userMessage);
+	@Query(" { userMessage: { $regex : ?0, $options:'i' } }")
+	List<QuestionAndAnswer> findByUserMessage(String userMessage);
 	
 }

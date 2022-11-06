@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import core.quest.answer.bot.dto.ResponseBase;
+import core.quest.answer.bot.dto.ResponseInputMessage;
 import core.quest.answer.bot.model.QuestionAndAnswer;
 import core.quest.answer.bot.repository.QuestionAndAnswerRepository;
 import core.quest.answer.bot.service.QuestionsAndAnswersService;
@@ -16,8 +18,24 @@ public class QuestionsAndAnswersServiceImp implements QuestionsAndAnswersService
 	private QuestionAndAnswerRepository questionAndAnswerRepository;
 	
 	@Override
-	public QuestionAndAnswer getQuestionAndAnswers(String userMessage) {
+	public ResponseInputMessage getQuestionAndAnswers(String userMessage) {
+
+		ResponseBase status = new ResponseBase();
+		status.setCode("0");
+		status.setDesciption("OK");
 		
-		return questionAndAnswerRepository.findByUserMessage(userMessage);
+		ResponseInputMessage reponse = new ResponseInputMessage();
+		reponse.setStatus(status);	
+		List<QuestionAndAnswer> reponseData = questionAndAnswerRepository.findByUserMessage(userMessage);
+		
+		QuestionAndAnswer uniqueResul = new QuestionAndAnswer();
+		if(reponseData.size()>0) {
+			uniqueResul = reponseData.get(0);
+		}
+		
+		reponse.setMessage(uniqueResul.getBotMessage());
+		
+		return reponse;
+
 	}
 }

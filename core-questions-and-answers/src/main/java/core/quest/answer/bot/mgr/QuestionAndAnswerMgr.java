@@ -1,9 +1,10 @@
 package core.quest.answer.bot.mgr;
 
 import core.quest.answer.bot.dto.RequestInputMessage;
+import core.quest.answer.bot.dto.ResponseInputMessage;
 
 public interface QuestionAndAnswerMgr {
 
-	String getAnswer(RequestInputMessage requestInputMessage);
+	ResponseInputMessage getAnswer(RequestInputMessage requestInputMessage);
 
 }
