@@ -2,6 +2,7 @@ package com.bootcito.telegram.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -10,7 +11,8 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import com.bootcito.telegram.constants.Response;
-import com.bootcito.telegram.dto.response.Status;
+import com.bootcito.telegram.dto.request.SendMessageCoreQuestAnsw;
+import com.bootcito.telegram.dto.response.ResponseBaseStatus;
 import com.bootcito.telegram.service.TelegramService;
 
 import lombok.AllArgsConstructor;
@@ -21,11 +23,22 @@ public class TelegramServiceImpl extends TelegramLongPollingBot implements  Tele
     
     private final Environment env;
     private final Logger log = LoggerFactory.getLogger(TelegramServiceImpl.class);
+    
+    @Autowired
+    private QuestAndAnswerServiceImp questAndAnswerServiceImp;
 
 
     @Override
     public void onUpdateReceived(Update update) {
         final String messageTextReceived = update.getMessage().getText();
+        
+        SendMessageCoreQuestAnsw sendMessageCoreQuestAnsw = new SendMessageCoreQuestAnsw();
+        sendMessageCoreQuestAnsw.setIdentificationUser(update.getMessage().getChatId().toString());
+        sendMessageCoreQuestAnsw.setMessage(messageTextReceived);
+        sendMessageCoreQuestAnsw.setPlatform("telegram");
+        
+        questAndAnswerServiceImp.sendMessage(sendMessageCoreQuestAnsw);
+        
         log.info("Mensaje: " + messageTextReceived);
         log.info("Destinatario: " + update.getMessage().getChatId());
 
@@ -42,12 +55,12 @@ public class TelegramServiceImpl extends TelegramLongPollingBot implements  Tele
     }
 
     @Override
-    public Status sendMessage(long chatId, String message){
+    public ResponseBaseStatus sendMessage(long chatId, String message){
          SendMessage sendMessage = new SendMessage();
          sendMessage.setChatId(chatId);
          sendMessage.setText(message);
  
-         Status status = new Status();
+         ResponseBaseStatus status = new ResponseBaseStatus();
          try {
              execute(sendMessage);
              status.setCode(Response.CODE_OK);

@@ -1,7 +1,7 @@
 package com.bootcito.telegram.service;
 
-import com.bootcito.telegram.dto.response.Status;
+import com.bootcito.telegram.dto.response.ResponseBaseStatus;
 
 public interface TelegramService {
-    Status sendMessage(long chatId, String message);
+    ResponseBaseStatus sendMessage(long chatId, String message);
 }

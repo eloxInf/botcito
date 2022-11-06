@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import com.bootcito.telegram.constants.Response;
 import com.bootcito.telegram.dto.request.SendMessageRequest;
 import com.bootcito.telegram.dto.response.SendMessageResponse;
-import com.bootcito.telegram.dto.response.Status;
+import com.bootcito.telegram.dto.response.ResponseBaseStatus;
 import com.bootcito.telegram.mgr.TelegramMgr;
 import com.bootcito.telegram.service.TelegramService;
 
@@ -20,7 +20,7 @@ public class TelegramMgrImpl implements TelegramMgr{
     @Override
     public SendMessageResponse sendMessage(SendMessageRequest sendMessageRequest){
         
-        Status status = new Status();
+        ResponseBaseStatus status = new ResponseBaseStatus();
         
         final long chatId = Long.parseLong(sendMessageRequest.getChatId());
         
