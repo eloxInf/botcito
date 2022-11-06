@@ -17,13 +17,13 @@ import com.example.demo.dto.ResponseSendMessage;
 
 @RestController
 public class ApiWhatsapp {
-	
+	/*
 	String urlWhatsapp = "https://web.whatsapp.com/";
 	final Logger logger = LoggerFactory.getLogger(cronController.class);
 	ChromeDriver driver = null;
 	
 	private void ApiWhatsapp() {
-        System.setProperty("webdriver.chrome.driver","/Users/angelovenegasvilche/.cache/selenium/chromedriver/mac64/106.0.5249.61/chromedriver");
+        System.setProperty("webdriver.chrome.driver","C://chromedriver_win32//chromedriver.exe");
 
         driver = new ChromeDriver();
 	}
@@ -34,7 +34,7 @@ public class ApiWhatsapp {
 
 		
 		if (driver == null) {
-        System.setProperty("webdriver.chrome.driver","/Users/angelovenegasvilche/.cache/selenium/chromedriver/mac64/106.0.5249.61/chromedriver");
+        System.setProperty("webdriver.chrome.driver","C://chromedriver_win32//chromedriver.exe");
         driver = new ChromeDriver();
 		}
 		
@@ -42,7 +42,7 @@ public class ApiWhatsapp {
 	
 	
 	@PostMapping(value = "sendMessage")
-	public ResponseSendMessage SendMessage(@RequestBody  RequestSendMessageWhatsapp request) {
+	public ResponseSendMessage SendMessage(@RequestBody RequestSendMessageWhatsapp request) {
 		ResponseSendMessage response = new ResponseSendMessage();
 		
 		logger.info("datos del request {0}", request);
@@ -112,7 +112,7 @@ public class ApiWhatsapp {
 	private WebElement findSearchNumber(ChromeDriver driver) {
 		
 		
-		return findElement(driver, "//*[@id=\'side\']/div[1]/div/div/div[2]/div/div[2]");
+		return findElement(driver, "//*[@id=\'side\']/div[1]");
 	}
 	
 	
@@ -144,5 +144,5 @@ public class ApiWhatsapp {
 		return findSearchNumber(driver) !=null;
 		
 	}
-
+ */
 }
