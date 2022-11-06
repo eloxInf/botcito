@@ -12,48 +12,73 @@ db.user_comunication.insertOne({
 })
 
 
-db.question_and_answers.insertOne({
 
-"internalCode" : "0001",
-"userMessage": "hola",
-"botMessage": "hola, bien y tu en que te puedo ayudar?",
+db.question_and_answers.insertOne(
+{
+"internalCode" : "1",
+"userMessage": "hola ",
+"botMessage": "Hola soy Botcito. Por favor elige una de las siguientes opciones: 1.-Ingresar un producto para monitoreo 2.-Eliminar un producto del Monitoreo 3.-Consultar status de un producto",
 "actionCode": "00000"
 })
 
-db.question_and_answers.insertOne({
-
-"internalCode" : "0002",
-"userMessage": "chao",
-"botMessage": "que tengas un buen dia",
+db.question_and_answers.insertOne(
+{
+"internalCode" : "2",
+"userMessage": "1",
+"botMessage": "Por favor envía la URL del producto que deseas monitorear por el chat",
 "actionCode": "00000"
 })
 
-db.question_and_answers.insertOne({
-
-"internalCode" : "0002",
-"userMessage": "tula",
-"botMessage": "mmm si, cometela doblada",
+db.question_and_answers.insertOne(
+{
+"internalCode" : "3",
+"userMessage": "2",
+"botMessage": "Elije el producto que deseas eliminar del monitoreo: a) Iphone 13 pro max b) Samsung s22 c) ultra Huawei p50 pro",
 "actionCode": "00000"
 })
 
-db.question_and_answers.insertOne({
-
-"internalCode" : "0002",
-"userMessage": "que dia es hoy",
-"botMessage": "el dia de la corneta",
+db.question_and_answers.insertOne(
+{
+"internalCode" : "4",
+"userMessage": "a",
+"botMessage": "El producto Iphone 13 pro max se ha eliminado correctamente",
 "actionCode": "00000"
 })
 
-db.question_and_answers.insertOne({
-"internalCode" : "0002",
-"userMessage": "matias",
-"botMessage": "anda con mentiras",
+db.question_and_answers.insertOne(
+{
+"internalCode" : "5",
+"userMessage": "a",
+"botMessage": "No te he entendido. Quizás necesitas una de las siguientes opciones: 1.-Ingresar un producto para monitoreo 2.-Eliminar un producto del Monitoreo 3.-Consultar status de un producto",
 "actionCode": "00000"
 })
 
-db.question_and_answers.insertOne({
-"internalCode" : "0002",
-"userMessage": "xxx",
-"botMessage": "Buena pelicula",
+
+
+
+
+
+
+
+db.question_and_answers.insertMany(
+[
+{
+"internalCode" : "1",
+"userMessage": "hola ",
+"botMessage": "Hola soy Botcito. Por favor elige una de las siguientes opciones:
+1.-Ingresar un producto para monitoreo
+2.-Eliminar un producto del Monitoreo
+2.-Consultar status de un producto",
 "actionCode": "00000"
-})
+},
+{
+"internalCode" : "2",
+"userMessage": "1",
+"botMessage": "Gracias por utilizar botcito, en cuanto baje de precio se te notificará.",
+"actionCode": "00000"
+}])
+
+
+
+
+
