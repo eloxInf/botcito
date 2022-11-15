@@ -1,20 +1,18 @@
 package core.quest.answer.bot.repository;
 
-import org.springframework.stereotype.Repository;
-
-import core.quest.answer.bot.model.QuestionAndAnswer;
-
 import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import core.quest.answer.bot.model.QuestionAndAnswerModel;
 
 @Repository
-public interface QuestionAndAnswerRepository extends MongoRepository<QuestionAndAnswer, String> {
+public interface QuestionAndAnswerRepository extends MongoRepository<QuestionAndAnswerModel, String> {
 
 	
-	List<QuestionAndAnswer> findByUserMessage(String userMessage);
+	List<QuestionAndAnswerModel> findByUserMessage(String userMessage);
 	
-	List<QuestionAndAnswer> findByInternalCode(String internalCode);
+	List<QuestionAndAnswerModel> findByInternalCode(String internalCode);
 	
 }

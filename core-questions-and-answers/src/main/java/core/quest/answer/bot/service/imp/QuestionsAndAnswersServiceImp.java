@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import core.quest.answer.bot.dto.ResponseBase;
 import core.quest.answer.bot.dto.ResponseInputMessage;
-import core.quest.answer.bot.model.QuestionAndAnswer;
+import core.quest.answer.bot.model.QuestionAndAnswerModel;
 import core.quest.answer.bot.repository.QuestionAndAnswerRepository;
 import core.quest.answer.bot.service.QuestionsAndAnswersService;
 
@@ -26,9 +26,9 @@ public class QuestionsAndAnswersServiceImp implements QuestionsAndAnswersService
 
 		ResponseInputMessage reponse = new ResponseInputMessage();
 		reponse.setStatus(status);
-		List<QuestionAndAnswer> reponseData = questionAndAnswerRepository.findByUserMessage(userMessage);
+		List<QuestionAndAnswerModel> reponseData = questionAndAnswerRepository.findByUserMessage(userMessage);
 
-		QuestionAndAnswer uniqueResul = new QuestionAndAnswer();
+		QuestionAndAnswerModel uniqueResul = new QuestionAndAnswerModel();
 		if (reponseData.size() > 0) {
 			uniqueResul = reponseData.get(0);
 		}
@@ -48,9 +48,9 @@ public class QuestionsAndAnswersServiceImp implements QuestionsAndAnswersService
 
 		ResponseInputMessage reponse = new ResponseInputMessage();
 		
-		List<QuestionAndAnswer> reponseData = questionAndAnswerRepository.findByInternalCode(codInternal);
+		List<QuestionAndAnswerModel> reponseData = questionAndAnswerRepository.findByInternalCode(codInternal);
 
-		QuestionAndAnswer uniqueResul = new QuestionAndAnswer();
+		QuestionAndAnswerModel uniqueResul = new QuestionAndAnswerModel();
 		if (reponseData.size() > 0) {
 			uniqueResul = reponseData.get(0);
 		}

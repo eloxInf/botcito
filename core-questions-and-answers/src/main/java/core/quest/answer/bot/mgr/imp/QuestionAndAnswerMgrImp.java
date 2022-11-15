@@ -9,16 +9,22 @@ import core.quest.answer.bot.dto.RequestInputMessage;
 import core.quest.answer.bot.dto.ResponseBase;
 import core.quest.answer.bot.dto.ResponseInputMessage;
 import core.quest.answer.bot.dto.TelegramRequestSendMessage;
+import core.quest.answer.bot.dto.UserCommunicationDto;
 import core.quest.answer.bot.mgr.QuestionAndAnswerMgr;
-import core.quest.answer.bot.model.QuestionAndAnswer;
+import core.quest.answer.bot.model.QuestionAndAnswerModel;
 import core.quest.answer.bot.service.QuestionsAndAnswersService;
 import core.quest.answer.bot.service.TelegramService;
+import core.quest.answer.bot.service.UserCommunicationService;
 
 @Component
 public class QuestionAndAnswerMgrImp implements QuestionAndAnswerMgr {
 
 	@Autowired
 	private QuestionsAndAnswersService questionsAndAnswersService;
+	
+	@Autowired
+	private UserCommunicationService userCommunicationService;
+	
 	
 	@Autowired
 	private TelegramService telegramService;
@@ -29,6 +35,15 @@ public class QuestionAndAnswerMgrImp implements QuestionAndAnswerMgr {
 	public ResponseInputMessage getAnswer(RequestInputMessage requestInputMessage) {
 
 		try {
+			UserCommunicationDto userCommincation = new UserCommunicationDto();
+			
+			userCommincation.setMessage(requestInputMessage.getMessage());
+			userCommincation.setIdentificationUser(requestInputMessage.getIdentificationUser());
+			userCommincation.setIdParentMje("");
+			userCommincation.setSoruceMessage(requestInputMessage.getPlatform());
+			userCommincation.setIdentificationUser(requestInputMessage.getIdentificationUser());
+			
+			userCommunicationService.saveCommunication(userCommincation);
 			
 			ResponseInputMessage reponse = questionsAndAnswersService
 					.getQuestionAndAnswers(requestInputMessage.getMessage().trim().toLowerCase());

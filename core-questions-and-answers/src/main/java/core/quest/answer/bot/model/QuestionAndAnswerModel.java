@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @Document(collection = "question_and_answers")
-public class QuestionAndAnswer {
+public class QuestionAndAnswerModel {
 	
 	@Field("internalCode")
 	String internalCode;
